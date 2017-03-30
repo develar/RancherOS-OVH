@@ -28,6 +28,7 @@ This guide assumes that your Linode is running the *KVM* hypervisor. Some Linode
 sysctl net.ipv6.conf.eth0.disable_ipv6=1
 apt-get -qq update
 apt-get -qq install ca-certificates
+apt-get -qq install parted
 wget -q https://raw.githubusercontent.com/robbertkl/RancherOS-Linode/master/install.sh
 chmod +x install.sh
 # create or fetch your own cloud-config.yml file
