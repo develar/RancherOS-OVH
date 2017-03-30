@@ -1,4 +1,6 @@
-# RancherOS Linode installer
+# RancherOS OVH installer
+
+**WORK IN PROGRESS**
 
 This repo contains an install script that can be used to install [RancherOS](http://rancher.com/rancher-os/) on [Linode](https://www.linode.com). While other ways are possible (like installing first to a local VM, then `dd`ing the results to the Linode disk), this method is very easy and quick. It uses the Finnix rescue mode to perform the installation using the install script from the [RancherOS repo](https://github.com/rancher/os). 
 
