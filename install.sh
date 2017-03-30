@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 while getopts "c:d:v:" OPTION
 do
 	case ${OPTION} in
@@ -38,7 +41,7 @@ if which apt-get > /dev/null
 then
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get -qq update
-	apt-get -qq install --no-install-recommends ca-certificates git grub2
+	apt-get -qq install --no-install-recommends ca-certificates git grub2 parted
 fi
 
 if [ -z "${VERSION}" ]
@@ -53,8 +56,10 @@ git clone --branch "${VERSION}" https://github.com/rancher/os.git rancheros
 ln -fs ../../build.conf rancheros/scripts/installer/build.conf
 ln -fs `pwd`/rancheros/scripts/installer /scripts
 mkdir dist
-wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/initrd"
-wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/vmlinuz"
+
+VMLINUZ=$(wget -q https://api.github.com/repos/rancher/os/releases/tags/${VERSION} -O- | grep -oP 'vmlinuz[^"]+' | head -n1)
+wget -q -O dist/initrd "https://github.com/rancher/os/releases/download/${VERSION}/initrd-${VERSION}"
+wget -q -O dist/vmlinuz "https://github.com/rancher/os/releases/download/${VERSION}/${VMLINUZ}"
 
 rancheros/scripts/installer/set-disk-partitions "${DEVICE}"
 rancheros/scripts/installer/lay-down-os -c "${CLOUD_CONFIG}" -d "${DEVICE}" -i dist -t generic
