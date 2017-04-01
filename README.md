@@ -38,3 +38,12 @@ Optionally, you can specify the following commandline arguments to the `install.
 ## License
 
 This repo is published under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+
+## Debug stuff
+
+umount /dev/sdb1
+rm -r -f  rancheros/
+rm -r -f  dist/
+fdisk /dev/sdb
+
+see if its bootable command: parted /dev/sdb unit s print free
