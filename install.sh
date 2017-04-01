@@ -42,6 +42,7 @@ then
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get -qq update
 	apt-get -qq install --no-install-recommends ca-certificates git grub2 parted
+	umount /dev/sdb1
 fi
 
 if [ -z "${VERSION}" ]
