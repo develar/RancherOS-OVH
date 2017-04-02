@@ -6,13 +6,10 @@
 Boot OVH VM into Rescue Mode first, connect via ssh and run the script
 
 ```
-sysctl net.ipv6.conf.eth0.disable_ipv6=1
-apt-get -qq update
-apt-get -qq install ca-certificates
-apt-get -qq install parted
 wget -q https://raw.githubusercontent.com/Snake4life/RancherOS-OVH/master/install.sh
 chmod +x install.sh
 # create or fetch your own cloud-config.yml file
+nano cloud-config.yml
 ./install.sh -c cloud-config.yml -d /dev/sdb -v X.X.X
 ```
 
@@ -50,3 +47,5 @@ rm -r -f  dist/
 fdisk /dev/sdb
 
 see if its bootable command: parted /dev/sdb unit s print free
+
+sysctl net.ipv6.conf.eth0.disable_ipv6=1
