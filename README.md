@@ -10,7 +10,9 @@ wget -q https://raw.githubusercontent.com/Snake4life/RancherOS-OVH/master/instal
 chmod +x install.sh
 # create or fetch your own cloud-config.yml file
 nano cloud-config.yml
-./install.sh -c cloud-config.yml -d /dev/sdb -v X.X.X
+./install.sh -c cloud-config.yml -d /dev/sdb
+#./install.sh -c cloud-config.yml -d /dev/sdb -v X.X.X
+you might need to trigger: umount /dev/sdb1 if you get into trouble
 ```
 
 ## Command line arguments
