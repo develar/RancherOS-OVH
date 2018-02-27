@@ -57,9 +57,10 @@ ln -fs ../../build.conf rancheros/scripts/installer/build.conf
 ln -fs `pwd`/rancheros/scripts/installer /scripts
 mkdir dist
 
-VMLINUZ=$(wget -q https://api.github.com/repos/rancher/os/releases/tags/${VERSION} -O- | grep -oP 'vmlinuz[^"]+' | head -n1)
-wget -q -O dist/initrd "https://github.com/rancher/os/releases/download/${VERSION}/initrd-${VERSION}"
-wget -q -O dist/vmlinuz "https://github.com/rancher/os/releases/download/${VERSION}/${VMLINUZ}"
+echo "${VERSION}"
+
+wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/initrd"
+wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/vmlinuz"
 
 rancheros/scripts/installer/set-disk-partitions "${DEVICE}"
 rancheros/scripts/installer/lay-down-os -c "${CLOUD_CONFIG}" -d "${DEVICE}" -i dist -t generic
