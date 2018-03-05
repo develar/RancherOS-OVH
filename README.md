@@ -3,6 +3,7 @@
 
 ## Installation steps
 1.) Fresh reinstall Ubuntu onto OVH VM
+
 2.) Boot OVH VM into Rescue Mode, connect via ssh and run the script
 
 ```
