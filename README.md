@@ -2,8 +2,8 @@
 
 
 ## Installation steps
-
-Boot OVH VM into Rescue Mode first, connect via ssh and run the script
+1.) Fresh reinstall Ubuntu onto OVH VM
+2.) Boot OVH VM into Rescue Mode, connect via ssh and run the script
 
 ```
 wget -q https://raw.githubusercontent.com/Snake4life/RancherOS-OVH/master/install.sh
