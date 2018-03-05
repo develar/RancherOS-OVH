@@ -42,7 +42,10 @@ then
 	export DEBIAN_FRONTEND=noninteractive
 	apt-get -qq update
 	apt-get -qq install --no-install-recommends ca-certificates git grub2 parted
-	umount /dev/sdb1
+	if grep -q /dev/sdb1 /proc/mounts; then
+		umount /dev/sdb1
+		echo "unmount /dev/sdb1"
+	fi
 fi
 
 if [ -z "${VERSION}" ]
