@@ -66,5 +66,5 @@ echo "${VERSION}"
 wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/initrd"
 wget -q -P dist "https://github.com/rancher/os/releases/download/${VERSION}/vmlinuz"
 
-rancheros/scripts/installer/set-disk-partitions "${DEVICE}"
+#rancheros/scripts/installer/set-disk-partitions "${DEVICE}"
 rancheros/scripts/installer/lay-down-os -c "${CLOUD_CONFIG}" -d "${DEVICE}" -i dist -t generic
